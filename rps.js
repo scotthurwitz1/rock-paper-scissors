@@ -7,7 +7,7 @@ function computerPlay() {
 
 function fn2() {
     let pp = document.getElementById("player1").value;
-    if (rps.includes(pp) == false) {
+    if (rps.includes(pp.toLowerCase()) == false) {
         alert("Try again");
     }
 }
