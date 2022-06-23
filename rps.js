@@ -1,15 +1,46 @@
 let rps = ['rock', "paper", "scissors"];
 
 function computerPlay() {
-    let cp = rps[Math.floor(Math.random()*rps.length)]
-    return cp
+    let computerSelection = rps[Math.floor(Math.random()*rps.length)]
+    return computerSelection
 }
 
-function fn2() {
-    let pp = document.getElementById("player1").value;
-    if (rps.includes(pp.toLowerCase()) == false) {
+function playerPlay() {
+    let playerSelection = prompt("Type Rock, Paper, or Scissors").toLowerCase();
+    if (rps.includes(playerSelection) == false) {
         alert("Try again");
+        playerPlay();
+    } else {
+        return playerSelection
     }
 }
 
-computerPlay()
+function playRound() {
+    let playerSelection = playerPlay();
+    let computerSelection = computerPlay();
+    if (playerSelection===computerSelection) {
+        alert("Draw!")
+        playRound()
+    } else if (playerSelection === "paper") {
+        if (computerSelection === "rock") {
+            console.log("Player Wins")
+        } else {console.log("Computer wins")}
+    }
+    else if (playerSelection === "rock") {
+        if (computerSelection === "scissors") {
+            console.log("Player Wins")
+        } else {console.log("Computer wins")}
+    }
+    else if (playerSelection === "scissors") {
+        if (computerSelection === "paper") {
+            console.log("Player Wins")
+        } else {console.log("Computer wins")}
+    }
+}
+
+
+playRound();
+
+
+
+
